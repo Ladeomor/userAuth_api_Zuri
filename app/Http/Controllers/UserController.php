@@ -73,11 +73,36 @@ class UserController extends Controller
                 'status' => true,
                 'message' => 'User Login Successful',
             ], 200);
-          
-    
-        
+        }
 
+    public function update(Request $request, $id){
+        $validate = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required'
+        ]);
 
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'message' => 'User details updated Successfully',
+            'user' => $user,
+
+        ],200);
+
+    }    
+
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+        return response()->json([
+            'message'=> 'User deleted successfully',
+
+        ]);
     }
 
     
