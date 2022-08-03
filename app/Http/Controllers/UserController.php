@@ -104,6 +104,41 @@ class UserController extends Controller
 
         ]);
     }
+    public function getUser($id){
+        $user = User::find($id);
+
+        if($user == null){
+        return response()->json([
+            // 'message' => 'id does not exist',
+            'user' => 'User does not exist',
+
+        ],401);
+    }else {
+        return response()->json([
+            'message' => 'User details returned Successfully',
+            'user' => $user,
+           
+
+        ],200);
+    }
+    }
+    public function getUsers(){
+        $user = User::all();
+
+        if($user == null){
+        return response()->json([
+            'user' => 'There are no existing users',
+
+        ],401);
+    }else {
+        return response()->json([
+            'message' => 'Users returned Successfully',
+            'user' => $user,
+           
+
+        ],200);
+    }
+    }
 
     
 }
