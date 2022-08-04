@@ -35,7 +35,6 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
 
         ]);
-        dd($request);
 
         return response()->json([
             'status' => true,
