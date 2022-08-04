@@ -14,7 +14,6 @@ use Session;
 class UserController extends Controller
 {
     public function register(Request $request){
-        dd($request);
         $validate = Validator::make($request->all(),[
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email',
@@ -29,6 +28,8 @@ class UserController extends Controller
             ], 401);
 
         }
+        dd($request);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
