@@ -16,9 +16,9 @@ class UserController extends Controller
     public function register(Request $request){
         dd($request);
         $validate = Validator::make($request->all(),[
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed'
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed'
         ]);
 
         if($validate->fails()){
@@ -44,8 +44,8 @@ class UserController extends Controller
     }
     public function login(Request $request){
         $validate = Validator::make($request->all(),[
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required|string|email',
+            'password' => 'required|string'
         ]);
 
         if($validate->fails()){
