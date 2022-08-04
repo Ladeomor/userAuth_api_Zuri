@@ -17,7 +17,7 @@ class UserController extends Controller
         $validate = Validator::make($request->all(),[
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6|confirmed'
         ]);
 
         if($validate->fails()){
