@@ -28,7 +28,6 @@ class UserController extends Controller
             ], 401);
 
         }
-        dd($request);
 
         $user = User::create([
             'name' => $request->name,
@@ -36,6 +35,8 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
 
         ]);
+        dd($request);
+
         return response()->json([
             'status' => true,
             'message' => 'User registration successful',
