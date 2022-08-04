@@ -14,6 +14,7 @@ use Session;
 class UserController extends Controller
 {
     public function register(Request $request){
+        db($request);
         $validate = Validator::make($request->all(),[
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
