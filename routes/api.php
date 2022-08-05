@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/user/create', [UserController::class, 'register']);
 Route::get('/user/login', [UserController::class, 'login']);
-Route::put('/user/update/{id}', [UserController::class, 'update']);
+Route::get('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 Route::get('/user/{id}', [UserController::class, 'getUser']);
 Route::get('/users', [UserController::class, 'getUsers']);
